@@ -7,7 +7,7 @@ public class Series{
 
      public Series()
     {
-        IdActor = 0;
+        IdSerie = 0;
         Nombre = "";
         AñoInicio = 0;
         Sinopsis = "";

@@ -3,6 +3,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Tu lugar en el mundo digital</h1>
+    <h1 class="display-4">Bienvenido a NEME, Tu lugar en el mundo digital</h1>
     <img src="Logo.jpeg">
+      <h1>Selecciona tu serie favorita</h1>
+      @foreach (Series item in ViewBag.listaSeries)
+    {
+        <div class="card" style="width: 18rem;">
+  <img src="@item.ImagenSerie" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title"><h2>@item.Nombre</h2>
+</h5>
+    <a href="#" class="btn btn-primary">Ver info serie</a>
+    <a href="#" class="btn btn-primary">Ver info actores</a>
+    <a href="#" class="btn btn-primary">Ver info temporadas</a>
+  </div>
+</div>
+    }
 </div>
