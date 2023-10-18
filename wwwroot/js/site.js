@@ -1,4 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿
+    function MostrarSerie(IdSerie) {
+        $.ajax(
+            {
+                type:'POST',
+                dataType:'JSON',
+                url:'/Home/VerInfoSerieAjax',
+                data:{IdS: IdSerie},
+                success:
+                function(response)
+                {
+                    $("#Nombre").html(response.nombre);
+                    $("#ImagenSerie").attr("src", "/" +response.imagenSerie);
+                    $("#Sinopsis").html(response.sinopsis);
+                    $("#AñoInicio").html("Año de inicio: " + response.añoInicio.substr(0,9));
+                }
+            });
+    }

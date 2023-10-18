@@ -16,4 +16,33 @@ static class BD
         }
          return listaSeries;
     }
+     public static List<Actores> ObtenerActores(int IdSerie)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Actores where IdSerie = @pidSerie";
+                return db.Query<Actores>(sql, new {pidserie = IdSerie }).ToList();
+            }
+        }
+
+        public static Series GetSeries(int IdSerie)
+        {
+            Series Actualserie = null;
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Series WHERE IdSerie = @pidSerie";
+                Actualserie = db.QueryFirstOrDefault<Series>(sql,new {pidSerie = IdSerie});
+            }
+            return Actualserie;
+        }
+        public static List<Temporadas> ObtenerTemporadas(int IdSerie)
+        {
+           using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                string sql = "SELECT * FROM Temporadas where IdSerie = @pidSerie";
+                return db.Query<Temporadas>(sql, new {pidSerie = IdSerie }).ToList();
+            }
+        }
 }
+
+

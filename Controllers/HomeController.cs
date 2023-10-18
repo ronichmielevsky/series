@@ -19,6 +19,21 @@ public IActionResult Index()
     return View();
 }
 
+public Series VerInfoSerieAjax(int IdSerie)
+{
+
+    return BD.GetSeries(IdSerie);
+}
+   
+ public List<Actores> VerInfoActoresAjax(int IdSerie)
+    {
+        return BD.ObtenerActores(IdSerie);
+    }
+
+  public List<Temporadas> VerInfoTemporadasAjax(int IdSerie)
+    {
+        return BD.ObtenerTemporadas(IdSerie);
+    }
 
 
     public IActionResult Privacy()
@@ -33,3 +48,9 @@ public IActionResult Index()
     }
     //cargar las serires de la base de datos en un viwbag
 }
+
+
+
+    
+
+  
