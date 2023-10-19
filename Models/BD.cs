@@ -18,14 +18,16 @@ static class BD
     }
      public static List<Actores> ObtenerActores(int IdSerie)
         {
+             List<Actores> ListaActores = new List<Actores>();   
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT * FROM Actores where IdSerie = @pidSerie";
-                return db.Query<Actores>(sql, new {pidserie = IdSerie }).ToList();
+                string sql = "SELECT * FROM Actores WHERE IdSerie = @pidSerie";
+                ListaActores= db.Query<Actores>(sql,new {pidSerie = IdSerie}).ToList();
             }
+            return ListaActores;
         }
 
-        public static Series GetSeries(int IdSerie)
+        public static Series GetSerie(int IdSerie)
         {
             Series Actualserie = null;
             using (SqlConnection db = new SqlConnection(_connectionString))
@@ -37,11 +39,13 @@ static class BD
         }
         public static List<Temporadas> ObtenerTemporadas(int IdSerie)
         {
+            List<Temporadas> listaTemporadas = new List<Temporadas>();
            using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                string sql = "SELECT * FROM Temporadas where IdSerie = @pidSerie";
-                return db.Query<Temporadas>(sql, new {pidSerie = IdSerie }).ToList();
+                string sql = "SELECT * FROM Temporadas WHERE IdSerie = @pidSerie";
+                listaTemporadas = db.Query<Temporadas>(sql,new {pidSerie = IdSerie}).ToList();
             }
+            return listaTemporadas;
         }
 }
 

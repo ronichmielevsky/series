@@ -7,17 +7,75 @@
     <img src="Logo.jpeg">
       <h1>Selecciona tu serie favorita</h1>
       @foreach (Series item in ViewBag.listaSeries)
-    {
-        <div class="card" style="width: 18rem;">
-  <img src="@item.ImagenSerie" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title"><h2>@item.Nombre</h2>
-</h5>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#IdSerie" onclick="MostrarSerie(@item.IdSerie)">Ver info serie</button>
-    <a href="#" class="btn btn-primary">Ver info actores</a>
-    <a href="#" class="btn btn-primary">Ver info temporadas</a>
+      {
+          <div class="card" style="width: 18rem;">
+            <img src="@item.ImagenSerie" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title"><h2>@item.Nombre</h2> </h5>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie" onclick="MostrarSerie(@item.IdSerie)">Ver info serie</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalActores"onclick="MostrarActores(@item.IdSerie)" >Ver info Actores</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTemporadas"onclick="MostrarTemporadas(@item.IdSerie)" >Ver info Temporadas</button>
+            </div>
+          </div>
+
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalSerie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">SERIE</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="TextoModalSerie" class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
 
-    }
+
+<!-- Modal -->
+<div class="modal fade" id="ModalActores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">ACTORES</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="TextoModalActores" class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalTemporadas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">TEMPORADAS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="TextoModalTemporadas" class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

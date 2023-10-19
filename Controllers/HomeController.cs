@@ -21,8 +21,7 @@ public IActionResult Index()
 
 public Series VerInfoSerieAjax(int IdSerie)
 {
-
-    return BD.GetSeries(IdSerie);
+    return BD.GetSerie(IdSerie);
 }
    
  public List<Actores> VerInfoActoresAjax(int IdSerie)

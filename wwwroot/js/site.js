@@ -1,18 +1,60 @@
 ﻿
-    function MostrarSerie(IdSerie) {
+    function MostrarSerie(id) {        
         $.ajax(
             {
-                type:'POST',
-                dataType:'JSON',
                 url:'/Home/VerInfoSerieAjax',
-                data:{IdS: IdSerie},
+                type:'GET',
+                dataType:'JSON',                
+                data:{IdSerie: id},
                 success:
-                function(response)
-                {
-                    $("#Nombre").html(response.nombre);
-                    $("#ImagenSerie").attr("src", "/" +response.imagenSerie);
-                    $("#Sinopsis").html(response.sinopsis);
-                    $("#AñoInicio").html("Año de inicio: " + response.añoInicio.substr(0,9));
-                }
+                    function(response) //en este caso response es un objeto SERIE
+                    {                        
+                        $("#TextoModalSerie").html(response.sinopsis);
+                    }
+            });
+    }
+
+
+    
+    function MostrarActores(id) {        
+         $.ajax(
+           {
+                 url:'/Home/VerInfoActoresAjax',
+                 type:'GET',
+               dataType:'JSON',                
+                 data:{IdSerie: id},
+                 success:
+                     function(response)  //en este caso response es una lista de ACTORES
+                     {   
+                        console.log(response);
+                        let text= "";
+                         response.forEach(element => {
+                             text += "<li>" + element.nombre + "</li>";
+                             text+= " | "
+                         });
+                         $("#TextoModalActores").html(text);
+                     }
+             });
+     }
+    
+    
+     function MostrarTemporadas(id) {        
+        $.ajax(
+          {
+                url:'/Home/VerInfoTemporadasAjax',
+                type:'GET',
+              dataType:'JSON',                
+                data:{IdSerie: id},
+                success:
+                    function(response)  //en este caso response es una lista de ACTORES
+                    {   
+                       console.log(response);
+                       let text= "";
+                        response.forEach(element => {
+                            text += "<li>" + element.tituloTemporada + "</li>";
+                            text+= " | "
+                        });
+                        $("#TextoModalTemporadas").html(text);
+                    }
             });
     }
